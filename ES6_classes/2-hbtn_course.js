@@ -44,7 +44,8 @@ export default class HolbertonCourse {
     students.forEach((student) => {
       if (typeof student !== 'string') {
         throw TypeError('Students must b ean array of strings');
-      }});
+      }
+    });
     this._students = students;
   }
 

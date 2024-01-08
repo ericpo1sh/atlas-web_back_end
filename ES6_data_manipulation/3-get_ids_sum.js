@@ -2,5 +2,10 @@ export default function getStudentIdsSum(students) {
   if (Object.getPrototypeOf(students) !== Array.prototype) {
     return [];
   }
-  return students.reduce((student) => student.id );
+  const listOfIds = students.map((student) => student.id );
+  const sumWithInitial = listOfIds.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    initialValue,
+  );
+  return sumWithInitial;
 }

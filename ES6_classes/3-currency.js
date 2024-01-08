@@ -6,8 +6,8 @@ export default class Currency {
     if (typeof name !== 'string') {
       throw TypeError('Name must be a string');
     }
-    self._code = code;
-    self._name = name;
+    this._code = code;
+    this._name = name;
   }
 
   get code() {
@@ -18,19 +18,19 @@ export default class Currency {
     if (typeof code !== 'string') {
       throw TypeError('Code must be a string');
     } else {
-      self._code = code;
+      this._code = code;
     }
   }
 
   get name() {
-    return this._name
+    return this._name;
   }
 
   set name(name) {
     if (typeof name !== 'string') {
       throw TypeError('Name must be a string');
     } else {
-      self._name = name;
+      this._name = name;
     }
   }
 

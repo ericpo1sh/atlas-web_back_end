@@ -8,7 +8,7 @@ export default class SkyHighBuilding extends Building {
     if (typeof floors !== 'number') {
       throw TypeError('Floors must be a number');
     }
-    this._sqft = sqft;
+    super(sqft);
     this._floors = floors;
   }
 
@@ -16,27 +16,11 @@ export default class SkyHighBuilding extends Building {
     return self._sqft;
   }
 
-  set sqft(sqft) {
-    if (typeof sqft !== 'number') {
-      throw TypeError('Sqft must be a number');
-    } else {
-      this._sqft = sqft;
-    }
-  }
-
   get floors() {
     return this._floors;
   }
 
-  set floors(floors) {
-    if (typeof floors !== 'number') {
-      throw TypeError('Sqft must be a number');
-    } else {
-      this._floors = floors;
-    }
-  }
-
   evacuationWarningMessage() {
-    return "Evacuate slowly the NUMBER_OF_FLOORS floors";
+    return `Evacuate slowly the ${this._floors} floors`;
   }
 }

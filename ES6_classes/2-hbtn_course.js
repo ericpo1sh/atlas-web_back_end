@@ -22,7 +22,7 @@ export default class HolbertonCourse {
 
   set name(name) {
     if (typeof name !== 'string') {
-      throw TypeError('Name must be a string')
+      throw TypeError('Name must be a string');
     } else {
       this._name = name;
     }
@@ -46,7 +46,7 @@ export default class HolbertonCourse {
         throw TypeError('Students must b ean array of strings');
       }});
     this._students = students;
-    }
+  }
 
   get students() {
     return this._students;

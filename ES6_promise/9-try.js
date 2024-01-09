@@ -4,8 +4,8 @@ export default function guardrail(mathFunction) {
 
   try {
     tryMathFunc = mathFunction;
-  } catch (e) {
-    tryMathFunc = `${e.name}: ${e.message}`;
+  } catch (error) {
+    tryMathFunc = `${error.name}: ${error.message}`;
   }
 
   queue.push(tryMathFunc);

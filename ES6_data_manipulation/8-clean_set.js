@@ -1,5 +1,8 @@
 export default function cleanSet(set, startString) {
-  let finalString = "";
+  let finalString = '';
+  if (!(startString) || typeof startString !== 'string') {
+    return finalString;
+  }
   for (const word of set) {
     const stringWord = String(word);
     if (stringWord.startsWith(startString)) {

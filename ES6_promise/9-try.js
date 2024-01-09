@@ -3,7 +3,7 @@ export default function guardrail(mathFunction) {
   let tryMathFunc;
 
   try {
-    tryMathFunc = mathFunction;
+    tryMathFunc = mathFunction();
   } catch (error) {
     tryMathFunc = `${error.name}: ${error.message}`;
   }

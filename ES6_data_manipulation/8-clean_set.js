@@ -4,7 +4,7 @@ export default function cleanSet(set, startString) {
     const stringWord = String(word);
     if (stringWord.startsWith(startString)) {
       const slicedWord = stringWord.slice(startString.length);
-      finalString =+ slicedWord;
+      finalString += slicedWord;
       if (finalString.length % 2 !== 0 && finalString.length > 1) {
         finalString += "-";
       }

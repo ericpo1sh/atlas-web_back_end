@@ -6,7 +6,8 @@ BaseCaching = __import__('base_caching').BaseCaching
 class BasicCache(BaseCaching):
     """ BasicCache defines:
     constants of your caching system
-    where your data are stored (in a dictionary) """
+    where your data are stored (in a dictionary)
+    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA """
     def __init__(self):
         ''' Initialize '''
         self.cache_data = {}

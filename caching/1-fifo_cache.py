@@ -10,7 +10,7 @@ class FIFOCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        ''' assign to the dictionary self.cache_data the item value for the key key. '''
+        ''' assign dictionary self.cache_data the item value for the key. '''
         if key is None or item is None:
             return
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:

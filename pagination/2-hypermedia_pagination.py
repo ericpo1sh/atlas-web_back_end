@@ -4,7 +4,6 @@ HyperMedia Pagination file
 """
 import csv
 from typing import List
-import math
 
 
 class Server:
@@ -42,18 +41,18 @@ class Server:
         dataset = self.dataset()
         page_size = len(dataset[start_index:end_index])
         data = dataset[start_index:end_index]
-        if page == 1:
-            prev_page = None
-        else:
-            prev_page = page - 1
-        if page == 3000:
-            next_page = None
-        else:
-            next_page = page + 1
         if page_size == 0:
             total_pages = 195
         else:
             total_pages = round(len(dataset) / page_size)
+        if page == 1:
+            prev_page = None
+        else:
+            prev_page = page - 1
+        if page > total_pages:
+            next_page = None
+        else:
+            next_page = page + 1
         return {
             "page_size": page_size,
             "page": page,

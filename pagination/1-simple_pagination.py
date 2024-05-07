@@ -26,6 +26,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """ checks if parameters are correct type and greater than 0
+        uses index_range() to find the correct indexes to paginate
+        returns list with specified indexes"""
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
         start_index, end_index = index_range(page, page_size)

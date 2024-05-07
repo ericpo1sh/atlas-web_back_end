@@ -49,7 +49,7 @@ class Server:
             prev_page = None
         else:
             prev_page = page - 1
-        if page == total_pages - 1:
+        if page == total_pages:
             next_page = None
         else:
             next_page = page + 1

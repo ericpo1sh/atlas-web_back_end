@@ -41,4 +41,16 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         '''  Deletion-resilient hypermedia pagination  '''
-        
+        assert index is None or 0 <= index < len(self.__indexed_dataset)
+        data = []
+        next_index = index + page_size
+        dataset = self.__indexed_dataset
+        for i in range(index, min(index + page_size, len(dataset))):
+            if i in self.__indexed_dataset:
+                data.append(self.__indexed_dataset[i])
+        return {
+            "index": index,
+            "next_index": next_index,
+            "page_size": page_size,
+            "data": data
+        }

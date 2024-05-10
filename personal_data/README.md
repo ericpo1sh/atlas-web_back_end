@@ -56,7 +56,7 @@ census data or tax receipts collected for publicly funded works
 - Aggregated statistics on the use of a product or service
 - Partially or fully masked IP addresses
 
-## **`[logging](https://docs.python.org/3/library/logging.html#module-logging)` — Logging facility for Python**
+## **logging — Logging facility for Python**
 
 The key benefit of having the logging API provided by a standard library module is that all Python modules can participate in logging, so your application log can include your own messages integrated with messages from third-party modules.
 

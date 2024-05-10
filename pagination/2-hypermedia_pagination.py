@@ -39,7 +39,6 @@ class Server:
         ''' returns a dictionary containing the following key-value pairs '''
         start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
-        page_size = len(dataset[start_index:end_index])
         data = dataset[start_index:end_index]
         if page_size == 0:
             total_pages = 195

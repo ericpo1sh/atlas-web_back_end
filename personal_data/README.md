@@ -56,7 +56,7 @@ census data or tax receipts collected for publicly funded works
 - Aggregated statistics on the use of a product or service
 - Partially or fully masked IP addresses
 
-## **logging — Logging facility for Python**
+## **`[logging](https://docs.python.org/3/library/logging.html#module-logging)` — Logging facility for Python**
 
 The key benefit of having the logging API provided by a standard library module is that all Python modules can participate in logging, so your application log can include your own messages integrated with messages from third-party modules.
 
@@ -145,3 +145,27 @@ Remember to replace `'your_regex_pattern_here'` with your actual regex pattern.
 - ``, `+`, `?`, `{}`: Quantifiers to match zero or more, one or more, zero or one, or a specific number of occurrences respectively.
 
 Source used: https://docs.python.org/3/library/re.html
+
+## Using bcrypt Module to hash passwords
+
+Using bcrypt to hash passwords is a recommended practice for securely storing passwords in a database. bcrypt is a password hashing function that incorporates a salt to protect against rainbow table attacks, which are precomputed tables used to crack password hashes.
+
+```python
+import bcrypt
+
+# Hash a password
+password = "example_password"
+hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+# Check a password against a hash
+entered_password = "example_password"
+if bcrypt.checkpw(entered_password.encode('utf-8'), hashed_password):
+    print("Password is correct!")
+else:
+    print("Incorrect password.")
+```
+
+In this example:
+
+- `bcrypt.hashpw()` is used to hash a password. It takes the password string encoded as bytes and a randomly generated salt (created by `bcrypt.gensalt()`). The resulting hash is a combination of the password and the salt.
+- `bcrypt.checkpw()` is used to check whether a given password matches a stored hash. It takes the entered password, encodes it as bytes, and compares it against the stored hash.

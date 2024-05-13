@@ -20,6 +20,13 @@ def protected_route():
     abort(401)
 
 
+@app_views.route('/forbidden', methods=["GET"], strict_slashes=False)
+def forbidden():
+    '''  HTTP status code for a request where the user is
+    authenticate but not allowed to access to a resource? '''
+    abort(403)
+
+
 @app_views.route('/stats/', strict_slashes=False)
 def stats() -> str:
     """ GET /api/v1/stats

@@ -14,7 +14,7 @@ def status() -> str:
     return jsonify({"status": "OK"})
 
 
-@app_views.route('/api/v1/unauthorized', methods=['GET'], strict_slashes=False)
+@app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
 def protected_route():
     ''' By calling abort(401), the error handler for 401 will be executed. '''
     abort(401)

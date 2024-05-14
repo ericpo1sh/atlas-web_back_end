@@ -2,8 +2,8 @@
 """ Main 5
 """
 import uuid
-from basic_auth import BasicAuth
-from user import User
+from api.v1.auth.basic_auth import BasicAuth
+from models.user import User
 
 """ Create a user test """
 user_email = str(uuid.uuid4())

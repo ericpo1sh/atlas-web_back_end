@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 ''' Basic Auth Class Module '''
-from auth import Auth
+from api.v1.auth.auth import Auth
 import base64
 from typing import Tuple, TypeVar
-from user import User
+from models.user import User
 
 
 class BasicAuth(Auth):

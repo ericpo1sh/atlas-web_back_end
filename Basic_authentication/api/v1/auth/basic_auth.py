@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 ''' Basic Auth Class Module '''
-from api.v1.auth.auth import Auth
+from auth import Auth
 import base64
-from typing import Tuple
+from typing import Tuple, TypeVar
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -49,3 +50,16 @@ class BasicAuth(Auth):
             return None, None
         email, password = decoded_base64_authorization_header.split(':')
         return email, password
+
+    def user_object_from_credentials(
+            self, user_email: str, user_pwd: str
+    ) -> TypeVar('User'):
+        ''' returns the User instance based on email and password. '''
+        user = User.search(user_email)
+        if not isinstance(user_email, str) or isinstance(user_pwd, str):
+            return None
+        elif user is None:
+            return None
+        elif not user.is_valid_password(user_pwd):
+            return None
+        return user

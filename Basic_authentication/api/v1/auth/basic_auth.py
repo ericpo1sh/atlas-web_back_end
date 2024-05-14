@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 ''' Basic Auth Class Module '''
-from api.v1.auth.auth import Auth
+from auth import Auth
 import base64
 from typing import Tuple, TypeVar
-from models.user import User
+from user import User
 
 
 class BasicAuth(Auth):
@@ -59,10 +59,11 @@ class BasicAuth(Auth):
             return None
         elif user_email is None or user_pwd is None:
             return None
-        user = User.search(user_email)
-        if user is None:
+        users = User.search({"email": user_email})
+        if users is None:
             return None
-        if user.is_valid_password(user_pwd):
-            return user
+        for user in users:
+            if user.is_valid_password(user_pwd):
+                return user
         else:
             return None

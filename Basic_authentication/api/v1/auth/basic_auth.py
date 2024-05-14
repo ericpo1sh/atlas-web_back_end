@@ -59,7 +59,10 @@ class BasicAuth(Auth):
             return None
         elif user_email is None or user_pwd is None:
             return None
-        users = User.search({"email": user_email})
+        try:
+            users = User.search({"email": user_email})
+        except Exception:
+            return None
         if users is None:
             return None
         for user in users:

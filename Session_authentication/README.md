@@ -72,7 +72,7 @@ In the context of session authentication, a cookie is a small piece of data that
 - **Session Continuity**: For each subsequent request to the server, the browser sends the session cookie, allowing the server to recognize the user and maintain their session.
 - **State Management**: Cookies help maintain user state, ensuring that the user does not need to re-authenticate on every request as they navigate through the web application.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/20c556fe-1bbe-4aa1-ac81-f6997849b729/642b91f9-9160-42a7-9623-2a4605fd817a/Untitled.png)
+![Unti![Screenshot 2024-05-15 102326](https://github.com/ericpo1sh/atlas-web_back_end/assets/126730794/6426efc6-272e-401b-a95c-40d8499c218e)
 
 ### Example of a Session Cookie:
 

@@ -37,3 +37,17 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
+
+    def find_user_by(self, **kwargs) -> User:
+        ''' finds user by arbitrary keyword arguments and
+        returns the first row found in the users '''
+        try:
+            query = self._session.query(User)
+            for key, value in kwargs.items():
+                if not hasattr(User, key):
+                    raise InvalidRequestError
+                query = query.filter(getattr(User, key) == value)
+            user = query.one()
+            return user
+        except NoResultFound:
+            raise NoResultFound

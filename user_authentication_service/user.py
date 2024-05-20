@@ -10,11 +10,8 @@ class User(Base):
     ''' Model User for a database table named users '''
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True, nullable=False)
-    email = Column(String(250), nullable=False, unique=True)
+    id = Column(Integer, primary_key=True)
+    email = Column(String(250), nullable=False)
     hashed_password = Column(String(250), nullable=False)
     session_id = Column(String(250), nullable=True)
     reset_token = Column(String(250), nullable=True)
-
-    def __repr__(self):
-        return f"<User(id={self.id}, email={self.email})>"

@@ -116,7 +116,6 @@ class Auth:
             user = self._db.find_user_by(reset_token=reset_token)
         except NoResultFound:
             raise ValueError
-        new_password = _hash_password(password)
-        self._db.update_user(user.id, new_password=new_password)
-        self._db.update_user(user.id, reset_token=None)
+        new_pass = _hash_password(password)
+        self._db.update_user(user.id, new_password=new_pass, reset_token=None)
         return None

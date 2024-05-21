@@ -28,6 +28,7 @@ def users():
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login():
+    ''' route to assist with login '''
     email = request.form.get('email')
     password = request.form.get('password')
     if not email or not password:

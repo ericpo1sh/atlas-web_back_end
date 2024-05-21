@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """app.py module"""
-from flask import Flask, request, jsonify, abort, redirect, url_for
+from flask import Flask, request, jsonify, abort, redirect
 from auth import Auth
 import uuid
 
@@ -49,7 +49,7 @@ def logout():
     current_session = request.cookies.get('session_id', None)
     current_user = AUTH.get_user_from_session_id(current_session)
     if current_user and current_session:
-        AUTH.destroy_session(current_user)
+        AUTH.destroy_session(current_user.id)
         return redirect('/')
     else:
         abort(403)

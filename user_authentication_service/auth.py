@@ -118,4 +118,3 @@ class Auth:
             raise ValueError
         new_pass = _hash_password(password)
         self._db.update_user(user.id, new_password=new_pass, reset_token=None)
-        return None

@@ -46,12 +46,22 @@ def login():
 def logout():
     ''' ind the user with the requested session ID.
     If the user exists destroy the session '''
-    session_id = request.cookies.get('session_id', None)
+    session_id = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
     if session_id is None or user is None:
         abort(403)
     AUTH.destroy_session(user.id)
     return redirect('/')
+
+
+@app.route('/profile', methods=["GET"], strict_slashes=False)
+def profile():
+    ''' return the profile based on the user '''
+    session_id = request.cookies.get('session_id')
+    user = AUTH.get_user_from_session_id(session_id)
+    if session_id is None or user is None:
+        abort(403)
+    return jsonify({"email": user.email}), 200
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ AUTH = Auth()
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def firstmessage():
+def home():
     ''' first message '''
     return jsonify({"message": "Bienvenue"})
 
@@ -51,7 +51,7 @@ def logout():
     if session_id is None or user is None:
         abort(403)
     AUTH.destroy_session(user.id)
-    redirect('/', 302)
+    return redirect('/')
 
 
 if __name__ == "__main__":

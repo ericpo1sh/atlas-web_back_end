@@ -70,9 +70,10 @@ def get_reset_password_token():
     try:
         email = request.form.get('email')
         token = AUTH.get_reset_password_token(email)
-        return jsonify({{"email": email, "reset_token": token}}), 200
     except ValueError:
         abort(403)
+    finally:
+        return jsonify({{"email": email, "reset_token": token}}), 200
 
 
 if __name__ == "__main__":

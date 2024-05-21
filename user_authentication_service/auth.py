@@ -76,3 +76,15 @@ class Auth:
             pass
         except InvalidRequestError:
             pass
+
+    def get_user_from_session_id(self, session_id: str):
+        ''' Function that Finds user by session ID  '''
+        try:
+            user = self._db.find_user_by(session_id=session_id)
+            if user:
+                return user
+        except NoResultFound:
+            pass
+        except InvalidRequestError:
+            pass
+        return None

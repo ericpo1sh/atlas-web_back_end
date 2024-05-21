@@ -2,6 +2,7 @@
 """app.py module"""
 from flask import Flask, request, jsonify, abort, redirect
 from auth import Auth
+from db import DB
 
 app = Flask(__name__)
 AUTH = Auth()
@@ -68,9 +69,9 @@ def get_reset_password_token():
     ''' Get reset password token '''
     email = request.form.get('email')
     token = AUTH.get_reset_password_token(email)
-    if token is None:
-        abort(403)
-    return jsonify({{"email": email, "reset_token": token}}), 200
+    if DB.find_user_by(email):
+        return jsonify({{"email": email, "reset_token": token}}), 200
+    abort(403)
 
 
 if __name__ == "__main__":

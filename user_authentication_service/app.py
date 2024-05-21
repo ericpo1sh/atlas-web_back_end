@@ -2,6 +2,7 @@
 """app.py module"""
 from flask import Flask, request, jsonify, abort
 from auth import Auth
+import uuid
 
 app = Flask(__name__)
 AUTH = Auth()
@@ -33,7 +34,7 @@ def login():
     if not email or not password:
         abort(400)
     if AUTH.valid_login(email=email, password=password):
-        new_session_id = AUTH._generate_uuid()
+        new_session_id = str(uuid.uuid4())
         response = jsonify({"email": email, "message": "logged in"})
         response.set_cookie('session_id', new_session_id)
         return response

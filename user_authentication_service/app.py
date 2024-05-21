@@ -8,13 +8,13 @@ app = Flask(__name__)
 AUTH = Auth()
 
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET'], strict_slashes=False)
 def firstmessage():
     ''' first message '''
     return jsonify({"message": "Bienvenue"})
 
 
-@app.route('/users', methods=['POST'])
+@app.route('/users', methods=['POST'], strict_slashes=False)
 def users():
     ''' checks if the user exists and returns based on existance '''
     email = request.form.get('email')
@@ -27,7 +27,7 @@ def users():
         return jsonify({"message": "email already registered"}), 400
 
 
-@app.route('/sessions', methods=['POST'])
+@app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -42,7 +42,7 @@ def login():
         abort(401)
 
 
-@app.route('/sessions', methods=['DELETE'])
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout():
     ''' ind the user with the requested session ID.
     If the user exists destroy the session '''

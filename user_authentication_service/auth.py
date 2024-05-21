@@ -88,3 +88,15 @@ class Auth:
         except InvalidRequestError:
             pass
         return None
+
+    def destroy_session(self, user_id: int):
+        ''' Function that updates the user’s session ID to None. '''
+        try:
+            user = self.get_user_from_session_id(user_id)
+            if user:
+                user.session_id = None
+                return None
+        except NoResultFound:
+            pass
+        except InvalidRequestError:
+            pass

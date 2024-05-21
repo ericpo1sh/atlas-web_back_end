@@ -8,7 +8,7 @@ from sqlalchemy.exc import InvalidRequestError
 import uuid
 
 
-def _hash_password(self, password: str) -> bytes:
+def _hash_password(password: str) -> bytes:
     '''  method that takes in a password
     string arguments and returns bytes. '''
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())

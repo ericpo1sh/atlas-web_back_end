@@ -48,9 +48,9 @@ def logout():
     If the user exists destroy the session '''
     current_session = request.cookies.get('session_id')
     current_user = AUTH.get_user_from_session_id(current_session)
-    if current_user is not None:
+    if current_user:
         AUTH.destroy_session(current_user)
-        return redirect(url_for('firstmessage'))
+        return redirect('/')
     else:
         abort(403)
 

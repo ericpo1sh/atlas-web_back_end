@@ -18,7 +18,8 @@ class Auth:
         string arguments and return a User object. '''
         try:
             user = self._db.find_user_by(email=email)
-            raise ValueError(f"User {email} already exists")
+            if user:
+                raise ValueError(f"User {email} already exists")
         except NoResultFound:
             hashed_pw = self._hash_password(password)
             create_user = self._db.add_user(email, hashed_pw)

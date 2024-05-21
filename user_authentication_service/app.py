@@ -46,11 +46,11 @@ def login():
 def logout():
     ''' ind the user with the requested session ID.
     If the user exists destroy the session '''
-    current_session = request.cookies.get('session_id', None)
-    current_user = AUTH.get_user_from_session_id(current_session)
-    if current_user is None or current_session is None:
+    session_id = request.cookies.get('session_id', None)
+    user = AUTH.get_user_from_session_id(session_id)
+    if user is None or session_id is None:
         abort(403)
-    AUTH.destroy_session(current_user.id)
+    AUTH.destroy_session(user.id)
     return redirect('/')
 
 

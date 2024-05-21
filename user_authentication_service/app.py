@@ -2,7 +2,6 @@
 """app.py module"""
 from flask import Flask, request, jsonify, abort, redirect
 from auth import Auth
-import uuid
 
 app = Flask(__name__)
 AUTH = Auth()
@@ -62,6 +61,16 @@ def profile():
     if session_id is None or user is None:
         abort(403)
     return jsonify({"email": user.email}), 200
+
+
+@app.route('/reset_password', methods=['POST'], strict_slashes=False)
+def get_reset_password_token():
+    ''' Get reset password token '''
+    email = request.form.get('email')
+    token = AUTH.get_reset_password_token(email)
+    if token is None:
+        abort(403)
+    return jsonify({{"email": email, "reset_token": token}})
 
 
 if __name__ == "__main__":

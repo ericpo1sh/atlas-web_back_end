@@ -44,6 +44,7 @@ class TestGetJson(unittest.TestCase):
 class TestMemoize(unittest.TestCase):
     ''' Unittesting for memoize() '''
     def test_memoize(self):
+        ''' unittesting for memoize function '''
         class TestClass:
             ''' TestClass Class '''
             def a_method(self):

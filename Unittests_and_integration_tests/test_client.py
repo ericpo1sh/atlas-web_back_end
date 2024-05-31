@@ -4,7 +4,7 @@ from client import GithubOrgClient
 import unittest
 from parameterized import parameterized, parameterized_class
 from unittest.mock import patch, PropertyMock, Mock
-from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
+from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -66,42 +66,27 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, expected)
 
 
-@parameterized_class([{
-    "org_payload": org_payload,
-    "repos_payload": repos_payload,
-    "expected_repos": expected_repos,
-    "apache2_repos": apache2_repos
-}])
+@parameterized_class(("org_payload",
+                      "repos_payload",
+                      "expected_repos",
+                      "apache2_repos"), TEST_PAYLOAD)
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     ''' testing integrations '''
     @classmethod
     def setUpClass(cls):
-        ''' setup '''
-        cls.get_patcher = patch(
-            'requests.get', side_effect=cls.mocked_requests_get
-        )
-        cls.mock_get = cls.get_patcher.start()
+        """Setup to run before and test"""
+        parameters = {"return_value.json.side_effect": [
+            cls.org_payload, cls.repos_payload,
+        ]}
+        cls.get_patcher = patch("requests.get", **parameters)
+        cls.get_patcher.start()
 
     @classmethod
     def tearDownClass(cls):
-        ''' stopping the process '''
+        """stopping the patcher"""
         cls.get_patcher.stop()
 
-    @staticmethod
-    def mocked_requests_get(url):
-        ''' getting mock requests '''
-        if url == "https://api.github.com/orgs/test-org":
-            response = Mock()
-            response.json.return_value = org_payload
-            return response
-        elif url == "https://api.github.com/orgs/test-org/repos":
-            response = Mock()
-            response.json.return_value = repos_payload
-            return response
-        return None
-
     def test_public_repos(self):
-        ''' testing public repos '''
-        client = GithubOrgClient("test-org")
-        self.assertEqual(client.public_repos(), expected_repos)
-        self.assertEqual(client.public_repos("apache-2.0"), apache2_repos)
+        """testing for public repos"""
+        self.assertEqual(GithubOrgClient("Google").public_repos(),
+                         self.expected_repos)

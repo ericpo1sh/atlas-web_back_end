@@ -48,3 +48,9 @@ class Cache:
     def get_int(self, key: int) -> Optional[int]:
         ''' method to automatically parametrize cache.get int conversion '''
         return self.get(key, fn=int)
+
+    def get_count_call(self, method_name: str) -> int:
+        ''' method to get the call count for methods '''
+        key = f"{self.__class__.__name__}.{method_name}:calls"
+        count = self._redis.get(key)
+        return int(count) if count else 0

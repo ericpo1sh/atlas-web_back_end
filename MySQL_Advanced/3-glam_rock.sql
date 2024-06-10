@@ -1,9 +1,9 @@
 -- Write a SQL script that lists all bands with Glam rock as their main style
 -- ranked by their longevity
 SELECT
-  band_name AS band_name,
+  band_name,
   formed - split AS lifespan,
-  style AS style
+  style
 FROM
   metal_bands
 WHERE

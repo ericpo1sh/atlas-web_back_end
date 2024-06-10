@@ -2,7 +2,10 @@
 -- ranked by their longevity
 SELECT DISTINCT
   band_name,
-  formed - split AS lifespan,
+  (CASE 
+    WHEN split IS NULL THEN 2020 - formed 
+    ELSE split - formed 
+  END) AS lifespan,
 FROM
   metal_bands
 WHERE

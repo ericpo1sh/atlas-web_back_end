@@ -7,7 +7,7 @@ SELECT
 FROM
   metal_bands
 WHERE
-  style="Glam rock"
+  style LIKE '%Glam rock%'
 GROUP BY
   band_name
 ORDER BY

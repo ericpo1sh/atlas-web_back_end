@@ -3,7 +3,6 @@
 SELECT DISTINCT
   band_name,
   formed - split AS lifespan,
-  style
 FROM
   metal_bands
 WHERE

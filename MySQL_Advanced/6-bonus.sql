@@ -8,8 +8,7 @@ CREATE PROCEDURE AddBonus (
 )
 BEGIN
   DECLARE project_id INT -- declaring variable to store project id
-  SELECT ID INTO project_id FROM projects
-  WHERE name = project_name -- checking from table projects.name if same as param
+  SELECT ID INTO project_id FROM projects WHERE name = project_name -- checking from table projects.name if same as param
   IF project_id IS NULL THEN
     INSERT INTO projects (name) VALUES (project_name);
     SET project_id = LAST_INSERT_ID();

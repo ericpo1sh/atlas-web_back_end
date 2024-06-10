@@ -1,7 +1,11 @@
 -- SQL script that creates a stored procedure ComputeAverageScoreForUser
 --  that computes and store the average score for a student.
 DELIMITER //
-CREATE PROCEDURE AddBonus(IN user_id INT, in project_name VARCHAR(255), IN score INT)
+CREATE PROCEDURE AddBonus(
+  IN user_id INT,
+  in project_name VARCHAR(255), 
+  IN score INT
+)
 BEGIN
   DECLARE project_id INT;
   SELECT id INTO project_id FROM projects WHERE name = project_name;

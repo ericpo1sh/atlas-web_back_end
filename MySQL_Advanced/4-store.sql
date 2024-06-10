@@ -1,7 +1,9 @@
 -- SQL script that creates a trigger that decreases the quantity of an item
 -- after adding a new order
 CREATE TRIGGER Buy
-AFTER SELECT
-ON quantity
+AFTER INSERT
+ON orders
 FOR EACH ROW
-set quantity = quantity-1;
+UPDATE items
+SET quantity = quantity - new.number
+WHERE name == new.item_name;

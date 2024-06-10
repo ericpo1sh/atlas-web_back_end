@@ -8,3 +8,4 @@ BEGIN
   THEN SET NEW.valid_email = FALSE;
   END IF;
 END;
+DELIMITER;

@@ -17,3 +17,6 @@ def log_stats():
         print(f'\tmethod {method}: {count_method}')
     status = logs.count_documents({'method': 'GET', 'path': '/status'})
     print(f'{status} status check')
+
+
+log_stats()

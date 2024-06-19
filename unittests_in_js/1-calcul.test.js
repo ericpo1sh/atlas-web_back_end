@@ -2,7 +2,7 @@ const calculateNumber = require("./1-calcul");
 var assert = require('assert')
 
 describe("Testing 1-calcul function", function() {
-  describe('when type is SUM', () => {
+  describe('SUM', () => {
     it("Testing the add function with normal params", function() {
       assert.strictEqual(calculateNumber('SUM', 1, 2), 3)
       assert.strictEqual(calculateNumber('SUM', 2, 3), 5)
@@ -34,7 +34,7 @@ describe("Testing 1-calcul function", function() {
       assert.strictEqual(calculateNumber('SUM', -100, -50), -150)
     });
   })
-  describe('when type is SUBTRACT', () => {
+  describe('SUBTRACT', () => {
     it("works properly with SUBTRACT, normal params", function() {
       assert.strictEqual(calculateNumber('SUBTRACT', 3, 2), 1)
       assert.strictEqual(calculateNumber('SUBTRACT', 13, 12), 1)
@@ -66,7 +66,7 @@ describe("Testing 1-calcul function", function() {
       assert.strictEqual(calculateNumber('SUBTRACT', -4, -9), 5)
     })
   });
-  describe('when type is DIVIDE', () => {
+  describe('DIVIDE', () => {
     it("works properly with DIVIDE, normal params", function() {
       assert.strictEqual(calculateNumber('DIVIDE', 10, 5), 2)
       assert.strictEqual(calculateNumber('DIVIDE', 6, 2), 3)

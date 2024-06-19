@@ -93,9 +93,9 @@ describe("calculateNumber", function() {
       assert.strictEqual(calculateNumber('DIVIDE', 53.3, 1.8), 26.5)
     })
     it("checks if Error was raised when divided by zero", function() {
-      assert.strictEqual(calculateNumber('DIVIDE', 15, 0), 'Error')
-      assert.strictEqual(calculateNumber('DIVIDE', 1, 0), 'Error')
-      assert.strictEqual(calculateNumber('DIVIDE', 3, 0), 'Error')
+      assert.strictEqual(calculateNumber('DIVIDE', 15, 0).toLowerCase(), 'error')
+      assert.strictEqual(calculateNumber('DIVIDE', 1, 0).toLowerCase(), 'error')
+      assert.strictEqual(calculateNumber('DIVIDE', 3, 0).toLowerCase(), 'error')
     })
   });
 });

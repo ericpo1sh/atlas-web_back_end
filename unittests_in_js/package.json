@@ -2,7 +2,8 @@
   "name": "unittests_in_js",
   "version": "1.0.0",
   "description": "testing in js",
-  "main": "0-calcul.js",
+  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "mocha test.js"
   },

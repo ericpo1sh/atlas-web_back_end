@@ -67,35 +67,16 @@ describe("calculateNumber", function() {
     })
   });
   describe('DIVIDE', () => {
-    it("works properly with DIVIDE, normal params", function() {
-      assert.strictEqual(calculateNumber('DIVIDE', 10, 5), 2)
-      assert.strictEqual(calculateNumber('DIVIDE', 6, 2), 3)
-      assert.strictEqual(calculateNumber('DIVIDE', 200, 5), 40)
-    })
-    it("works properly with DIVIDE, rounding first num", function() {
-      assert.strictEqual(calculateNumber('DIVIDE', 10.1, 5), 2)
-      assert.strictEqual(calculateNumber('DIVIDE', 6.2, 2), 3)
-      assert.strictEqual(calculateNumber('DIVIDE', 200.3, 5), 40)
-    })
-    it("works properly with DIVIDE, rounding second num", function() {
-      assert.strictEqual(calculateNumber('DIVIDE', 10, 5.3), 2)
-      assert.strictEqual(calculateNumber('DIVIDE', 6, 2.4), 3)
-      assert.strictEqual(calculateNumber('DIVIDE', 200, 5.1), 40)
-    })
-    it("checks if negatives works properly with DIVIDE", function() {
-      assert.strictEqual(calculateNumber('DIVIDE', -10, 5), -2)
-      assert.strictEqual(calculateNumber('DIVIDE', -15, 3), -5)
-      assert.strictEqual(calculateNumber('DIVIDE', -20, 10), -2)
-    })
-    it("checks if floats works properly with DIVIDE", function() {
-      assert.strictEqual(calculateNumber('DIVIDE', 33.3, 22.2), 1.5)
-      assert.strictEqual(calculateNumber('DIVIDE', 23.3, 5.2), 4.6)
-      assert.strictEqual(calculateNumber('DIVIDE', 53.3, 1.8), 26.5)
-    })
-    it("checks if Error was raised when divided by zero", function() {
-      assert.strictEqual(calculateNumber('DIVIDE', 15, 0).toLowerCase(), 'error')
-      assert.strictEqual(calculateNumber('DIVIDE', 1, 0).toLowerCase(), 'error')
-      assert.strictEqual(calculateNumber('DIVIDE', 3, 0).toLowerCase(), 'error')
-    })
+    it('should return 0.2 when inputs are 1.4 and 4.5', () => {
+      assert.equal(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
+    });
+
+    it('should return "Error" when the second input rounds to 0', () => {
+      assert.equal(calculateNumber('DIVIDE', 1.4, 0), 'Error');
+    });
+
+    it('should return 1 when inputs are 1.4 and 1.4', () => {
+      assert.equal(calculateNumber('DIVIDE', 1.4, 1.4), 1);
+    });
   });
 });

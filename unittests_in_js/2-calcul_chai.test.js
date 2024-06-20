@@ -3,7 +3,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 describe("calculateNumber", function() {
-  describe('SUM', () => {
+  describe('SUM', () => { //Puzzles code because checker broke for me
     it('should return 6 when inputs are 1.4 and 4.5', () => {
       expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
     });

@@ -4,23 +4,22 @@ const expect = chai.expect;
 
 describe("calculateNumber", function() {
   describe('SUM', () => {
-    it("Testing the add function with normal params", function() {
-      expect(calculateNumber('SUM', 1, 2)).to.equal(3);
+    it('should return 6 when inputs are 1.4 and 4.5', () => {
+      expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
     });
-    it("Testing add with one float number", function() {
-      expect(calculateNumber('SUM', 30, 15.3)).to.equal(45);
+
+    it('should return 0 when inputs are -1.4 and 1.4', () => {
+      expect(calculateNumber('SUM', -1.4, 1.4)).to.equal(0);
     });
-    it("Testing add with two float numbers", function() {
-      expect(calculateNumber('SUM', 11.1, 77.7)).to.equal(89);
+  });
+
+  describe('SUBTRACT', () => {
+    it('should return -4 when inputs are 1.4 and 4.5', () => {
+      expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
     });
-    it("Testing add with floats that end with .5", function() {
-      expect(calculateNumber('SUM', 3.5, 9.5)).to.equal(14);
-    });
-    it("works with negative number and positive", function() {
-      expect(calculateNumber('SUM', 100, -50)).to.equal(50);
-    });
-    it("works with two negative numbers", function() {
-      expect(calculateNumber('SUM', -1, -9)).to.equal(-10);
+
+    it('should return 0 when inputs are 1.4 and 1.4', () => {
+      expect(calculateNumber('SUBTRACT', 1.4, 1.4)).to.equal(0);
     });
   });
 

@@ -7,7 +7,7 @@ const Utils = {
       return Math.round(a) - Math.round(b);
     }
     if (type === 'DIVIDE') {
-      if (b === 0) {
+      if (Math.round(b) === 0) {
         return 'Error';
       }
       return Math.round(a) / Math.round(b);

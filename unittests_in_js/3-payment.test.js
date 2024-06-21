@@ -5,9 +5,10 @@ const chai = require('chai');
 const expect = chai.expect;
 
 describe('sendPaymentRequestToAPI', function() {
-  describe('MATH', function () {
-    it('makes sure the math is the same used as the utils method', function () {
-      expect()
-    })
-  })
-})
+  let spy = sinon.spy(Utils, 'sendPaymentRequestToApi');
+  it('makes sure the math is the same used as the utils method', function () {
+    sendPaymentRequestToApi(99, 30);
+    expect(spy.calledOnce).to.be.true;
+    expect(spy.calledWith('SUM', 99, 30)).to.be.true;
+  });
+});

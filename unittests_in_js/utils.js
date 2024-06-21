@@ -14,4 +14,4 @@ const Utils = {
     }
   }
 };
-models.export = Utils
+module.export = Utils

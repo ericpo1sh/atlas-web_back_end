@@ -6,6 +6,9 @@ const sendPaymentRequestToApi = require('./6-payment_token');
 
 describe('getPaymentTokenFromAPI', function() {
   it('should return a resolved promise object if true', function(done) {
-    getPaymentTokenFromAPI(true);
+    getPaymentTokenFromAPI(true).then(response => {
+      expect(response).to.have.property('data', 'Successful response from the API');
+      done();
+    }).catch(err => done(err));;
   })
 })

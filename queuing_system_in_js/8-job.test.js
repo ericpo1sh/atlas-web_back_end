@@ -16,7 +16,7 @@ describe('createPushNotificationsJobs', function() {
     queue.testMode.exit();
   });
 
-  it('checks if jobs is an array', function(done) {
+  it('displays a error message if jobs is not an array', function(done) {
     expect(createPushNotificationsJobs("hello", queue)).to.throw('Jobs is not an array');
     done();
   })

@@ -2,8 +2,8 @@ const kue = require('kue');
 const queue = kue.createQueue();
 
 const job_data = {
-  phoneNumber: 'string',
-  message: 'string',
+  phoneNumber: '911',
+  message: 'hello police man',
 }
 
 const job = queue.create('push_notification_code', job_data).save((err) => {

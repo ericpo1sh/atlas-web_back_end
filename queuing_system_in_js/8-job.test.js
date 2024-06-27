@@ -33,7 +33,6 @@ describe('createPushNotificationsJobs', function() {
         message: 'This is the code 4562 to verify your account'
       }
     ];
-    console.log('hello')
     createPushNotificationsJobs(jobs, queue);
     expect(queue.testMode.jobs[0].data).to.equal(jobs[0]);
     expect(queue.testMode.jobs[1].data).to.equal(jobs[1]);
